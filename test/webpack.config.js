@@ -10,7 +10,7 @@ module.exports = {
   mode: 'development',
   // 入口
   entry: {
-    app: './src/index',
+    app: path.join(__dirname, 'src'),
   },
   // 出口
   output: {
