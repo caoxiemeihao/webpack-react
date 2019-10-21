@@ -3,7 +3,7 @@ const baseWebpackConfig = require('./webpack.base.config')
 const utils = require('./utils')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+module.exports = webpackMerge(baseWebpackConfig, {
   // 指定构建环境
   mode: 'development',
   // 插件
@@ -25,4 +25,4 @@ module.exports = {
       // 接口请求代理
     },
   },
-}
+})

@@ -3,7 +3,7 @@ const baseWebpackConfig = require('./webpack.base.config')
 const utils = require('./utils')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+module.exports = webpackMerge(baseWebpackConfig, {
   // 指定构建环境
   mode: 'production',
   plugins: [
@@ -20,4 +20,4 @@ module.exports = {
       },
     }),
   ],
-}
+})

@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import HomePage from '_p/home'
+import HomePage from '_p/home/home'
 
-class App extends React.Compoment {
+class App extends React.Component {
   render() {
     return (
-      <div classNmae="app-container">
+      <div className="app-container">
         <HomePage />
       </div>
     )

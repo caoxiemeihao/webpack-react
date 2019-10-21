@@ -3,7 +3,7 @@ const utils = require('./utils')
 module.exports = {
   // 入口
   entry: {
-    app: utils.resolve('../src'),
+    app: utils.resolve('../src/app'),
   },
   // 出口
   output: {
@@ -16,8 +16,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/, // 匹配react文件
-        // exclude: /node_modules/, // 不处理node_modules中的模块
-        include: utils.resolve('..', 'src'),
+        exclude: /node_modules/, // 不处理node_modules中的模块
         loader: 'babel-loader',
       },
       {
@@ -69,7 +68,7 @@ module.exports = {
     alias: {
       '@': utils.resolve('..', 'src'),
       'assets': utils.resolve('..', 'src/assets'),
-      '_c': utils.resolve('..', 'src/compoments'),
+      '_c': utils.resolve('..', 'src/components'),
       '_p': utils.resolve('..', 'src/pages'),
     },
   },

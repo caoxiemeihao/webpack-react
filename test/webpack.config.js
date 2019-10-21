@@ -10,7 +10,7 @@ module.exports = {
   mode: 'development',
   // 入口
   entry: {
-    app: path.join(__dirname, 'src'),
+    app: path.join(__dirname, 'src/app'),
   },
   // 出口
   output: {
