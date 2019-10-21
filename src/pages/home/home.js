@@ -3,12 +3,8 @@ import './home.less'
 import reactLogo from 'assets/react-logo.jpg'
 
 export default class Home extends React.PureComponent {
-  constructor() {
-    super()
-
-    this.state = {
-      str: 'Home Compoment'
-    }
+  state = {
+    str: 'Home Compoment'
   }
 
   render() {
