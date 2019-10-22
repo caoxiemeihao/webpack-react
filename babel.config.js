@@ -1,4 +1,4 @@
-{
+module.exports = {
   "presets": [
     ["@babel/preset-env", {
       "modules": false,
@@ -13,6 +13,6 @@
       "corejs": 2, // polyfill 需要使用@babel/runtime-corejs2
       "useBuildIns":"usage", // 按需引入,即使用什么新特性打包什么新特性, 可以减小打包的体积
     }],
-    "@babel/plugin-proposal-class-properties"
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
   ]
 }
