@@ -1,12 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import HomePage from '_p/home/home'
+import AppRouter from '@/router'
+import './app.less'
 
 class App extends React.Component {
   render() {
     return (
       <div className="app-container">
-        <HomePage />
+        <img className="react-logo" src={require('assets/react-logo.jpg')} />
+        <hr/>
+        <AppRouter />
       </div>
     )
   }
