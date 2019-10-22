@@ -10,7 +10,7 @@ export default class Home extends React.PureComponent {
     const { str } = this.state
 
     return (
-      <div className="home-container">
+      <div class="home-container">
         {str}
       </div>
     )

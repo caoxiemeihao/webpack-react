@@ -10,7 +10,7 @@ export default class User extends React.PureComponent {
     const { str } = this.state
 
     return (
-      <div className="user-container">
+      <div class="user-container">
         {str}
       </div>
     )

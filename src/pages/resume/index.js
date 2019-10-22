@@ -10,7 +10,7 @@ export default class Resume extends React.PureComponent {
     const { str } = this.state
 
     return (
-      <div className="resume-container">
+      <div class="resume-container">
         {str}
       </div>
     )

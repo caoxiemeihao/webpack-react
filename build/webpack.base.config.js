@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const utils = require('./utils')
 
 module.exports = {
@@ -69,7 +71,21 @@ module.exports = {
       '@': utils.resolve('..', 'src'),
       'assets': utils.resolve('..', 'src/assets'),
       '_c': utils.resolve('..', 'src/components'),
+      '_l': utils.resolve('..', 'src/layout'),
       '_p': utils.resolve('..', 'src/pages'),
     },
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: utils.resolve('..', 'index.html'), // html 模板
+    }),
+    // 处理 static 下的静态文件
+    new CopyWebpackPlugin([
+      {
+        from: utils.resolve('..', 'static'), // 从哪个目录 Copy
+        to: 'static', // Copy 到哪个目录
+        ignore: ['.*'],
+      }
+    ]),
+  ],
 }
