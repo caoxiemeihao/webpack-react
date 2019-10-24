@@ -21,3 +21,10 @@ webpack4 构建 react 项目
   }]
 ]
 ```
+
+## mock server *19-10-24*
+```bash
+yarn mock
+or
+npm run mock
+```
