@@ -23,7 +23,7 @@ class AppRouter extends React.PureComponent {
             <Route exact path="/home" component={Home} />
             <Route path="/blog" component={Blog} />
             <Route exact path="/resume" component={Resume} />
-            <Route exact path="/user" component={User} />
+            <Route path="/user" component={User} />
             {/* <Route exact path="*" component={404} /> 如果需要 404 页面 */}
           </Switch>
         </div>
