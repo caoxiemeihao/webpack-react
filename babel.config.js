@@ -14,6 +14,9 @@ module.exports = {
       "useBuildIns":"usage", // 按需引入,即使用什么新特性打包什么新特性, 可以减小打包的体积
     }],
 
+    // 开启装饰器语法【必须放在class-properties前面】
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+
     // es7 类属性
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
 
@@ -25,6 +28,6 @@ module.exports = {
     }],
 
     // jsx 属性转换 [class => className]
-    "react-html-attrs"
+    "react-html-attrs",
   ]
 }
