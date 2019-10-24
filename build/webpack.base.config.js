@@ -40,6 +40,9 @@ module.exports = {
           },
           {
             loader: 'css-loader',
+            options: {
+              modules: true, // 开启 css 模块化
+            },
           },
           {
             loader: 'less-loader', // 编译 less

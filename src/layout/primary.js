@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout } from 'antd'
 import SideMenu from '_c/layout/SideMenu'
 import HeaderComp  from '_c/layout/Header'
+import styles from './primary.less'
 
 const { Header, Sider, Content } = Layout
 const headerStyle = {
@@ -25,7 +26,7 @@ class PrimaryLayout extends React.Component {
     const { collapsed } = this.state
 
     return (
-      <Layout>
+      <Layout class={styles.mainStyle}>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div class="logo" />
           <SideMenu />

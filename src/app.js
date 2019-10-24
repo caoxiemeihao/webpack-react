@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import classNames from 'classnames'
 import AppRouter from '@/router'
 import PrimaryLayout from '_l/primary'
-import './app.less'
+import styles from './app.less'
 
 class App extends React.Component {
   render() {
     return (
-      <div class="app-container">
+      <div class={classNames("app-container", styles.appContainer)}>
         <PrimaryLayout>
           <img class="react-logo" src={require('assets/react-logo.jpg')} />
           <hr/>
