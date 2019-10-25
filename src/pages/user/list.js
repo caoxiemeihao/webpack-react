@@ -3,9 +3,9 @@ import { withRouter } from 'react-router-dom'
 import { Button } from 'antd'
 import { inject, observer } from 'mobx-react'
 
-@inject("UserList")
-@withRouter
-@observer
+@inject("UserList") // 注入 mobx-store 中的 UserList
+@withRouter // 注入 router 功能
+@observer // 将实例加入加入观察队列
 class List extends React.PureComponent {
   addUser = () => {
     const { history } = this.props
@@ -13,23 +13,27 @@ class List extends React.PureComponent {
     history.push('/user/add?name=123')
   }
 
-  setName = () => {
+  componentDidMount() {
     const { UserList } = this.props
 
-    console.log(this.props)
-
-    UserList.setName('Mobx 大发好 \(^o^)/~')
+    UserList.getUserList()
   }
 
   render() {
     const { UserList } = this.props
+    const { userList: list } = UserList
 
     return (
       <div>
         <h2>User List Page</h2>
         <h3>组件：{UserList.name}</h3>
         <Button onClick={this.addUser}>添加用户</Button>
-        <Button onClick={this.setName}>修改名称</Button>
+        <hr/>
+        <ol>
+          {list.map((_, idx) => (
+            <li key={idx}> -> {_.user_name}</li>
+          ))}
+        </ol>
       </div>
     )
   }

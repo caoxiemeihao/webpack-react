@@ -1,14 +1,24 @@
 import { observable, action } from 'mobx'
+import axios from 'axios'
 
 class UserList {
-  @observable name
+  @observable userList
 
   constructor() {
-    this.name = "My name is user list"
+    this.userList = []
   }
 
-  setName(name) {
-    this.name = name
+  @action
+  async getUserList() {
+    const { data: res = {} } = await axios({
+      method: 'get',
+      url: '/api/user/list',
+    })
+    const { code, data, message } = res
+
+    if (code === 200) {
+      this.userList = data
+    }
   }
 }
 
