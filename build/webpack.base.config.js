@@ -22,7 +22,8 @@ module.exports = {
   // 出口
   output: {
     path: resolve('../dist'),
-    filename: 'js/[name].[hash].js',
+    filename: assetsPath('js/[name].[chunkhash:5].js'),
+    chunkFilename: assetsPath('js/[name].[chunkhash:5].js'),
     publicPath: '/', // 打包后的资源访问路径前缀
   },
   // 模块
