@@ -1,10 +1,11 @@
 import React from 'react'
 import { Route, BrowserRouter, Link, Switch } from 'react-router-dom'
+import LoadableComponent from '_c/loadable'
 
-import Home from '_p/home'
-import Blog from '_p/blog'
-import Resume from '_p/resume'
-import User from '_p/user'
+const Home = LoadableComponent(() => import('_p/home'))
+const Blog = LoadableComponent(() => import('_p/blog'))
+const Resume = LoadableComponent(() => import('_p/resume'))
+const User = LoadableComponent(() => import('_p/user'))
 
 class AppRouter extends React.PureComponent {
   render() {
