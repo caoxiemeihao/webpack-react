@@ -2,6 +2,8 @@ const webpackMerge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.config')
 const utils = require('./utils')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 module.exports = webpackMerge(baseWebpackConfig, {
   // 指定构建环境
@@ -19,5 +21,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
         removeAttributeQuotes: true, // 去掉属性引号 src="xxxx.js" => src=xxxx.js
       },
     }),
+    new CleanWebpackPlugin(),
+    new BundleAnalyzerPlugin(),
   ],
 })
