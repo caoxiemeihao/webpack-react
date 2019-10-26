@@ -1,15 +1,27 @@
+/**
+ * webpack 基本配置
+ */
+
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const utils = require('./utils')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const resolve = (...args) => path.resolve(__dirname, ...args)
+const assetsPath = _path => path.posix.join('static', _path)
+const isDev = process.env.NODE_ENV === 'development'
+const isProd = process.env.NODE_ENV === 'production'
+
+// process.exit(0)
 
 module.exports = {
   // 入口
   entry: {
-    app: utils.resolve('../src/app'),
+    app: resolve('../src/app'),
   },
   // 出口
   output: {
-    path: utils.resolve('../dist'),
+    path: resolve('../dist'),
     filename: 'js/[name].[hash].js',
     publicPath: '/', // 打包后的资源访问路径前缀
   },
@@ -36,17 +48,22 @@ module.exports = {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev, // css 热更新，可能不起作用 ^_^
+              reloadAll: true,
+            },
           },
+          // {
+          //   loader: 'style-loader', // 创建 <style></style> 标签，与 MiniCssExtractPlugin 有冲突
+          // },
           {
             loader: 'css-loader',
             options: {
               modules: true, // 开启 css 模块化
             },
           },
-          {
-            loader: 'less-loader', // 编译 less
-          }
+          'less-loader', // 编译 less
         ]
       },
       {
@@ -71,24 +88,30 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json'], // 解析扩展。[引入文件时不用加扩展名]
     alias: {
-      '@': utils.resolve('..', 'src'),
-      'assets': utils.resolve('..', 'src/assets'),
-      '_c': utils.resolve('..', 'src/components'),
-      '_l': utils.resolve('..', 'src/layout'),
-      '_p': utils.resolve('..', 'src/pages'),
+      '@': resolve('..', 'src'),
+      'assets': resolve('..', 'src/assets'),
+      '_c': resolve('..', 'src/components'),
+      '_l': resolve('..', 'src/layout'),
+      '_p': resolve('..', 'src/pages'),
     },
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: utils.resolve('..', 'index.html'), // html 模板
+      template: resolve('..', 'index.html'), // html 模板
     }),
     // 处理 static 下的静态文件
     new CopyWebpackPlugin([
       {
-        from: utils.resolve('..', 'static'), // 从哪个目录 Copy
+        from: resolve('..', 'static'), // 从哪个目录 Copy
         to: 'static', // Copy 到哪个目录
         ignore: ['.*'],
       }
     ]),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: assetsPath('css/[name].[hash].css'),
+      chunkFilename: assetsPath('css/[name].[chunkhash].css'),
+    }),
   ],
 }
